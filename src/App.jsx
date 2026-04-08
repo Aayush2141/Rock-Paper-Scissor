@@ -7,7 +7,7 @@ export default function App() {
   const [winner, setWinner] = useState("Let's Play!");
   const [streak, setStreak] = useState(0);
   const [history, setHistory] = useState([]);
-  const [score, setScore] = useState({ wins: 0, losses: 0, ties: 0 }); // NEW
+  const [score, setScore] = useState({ wins: 0, losses: 0, ties: 0 });
 
   let emojisData = { "Rock": "🪨", "Paper": "📄", "Scissor": "✂️" };
 
@@ -31,7 +31,7 @@ export default function App() {
     if (move === computermove) {
       setWinner("It's a Tie!");
       setStreak(0);
-      setScore(prev => ({ ...prev, ties: prev.ties + 1 })); // NEW
+      setScore(prev => ({ ...prev, ties: prev.ties + 1 }));
     } else if (
       (move === "Rock" && computermove === "Scissor") ||
       (move === "Paper" && computermove === "Rock") ||
@@ -39,11 +39,11 @@ export default function App() {
     ) {
       setWinner("You Won!");
       setStreak(streak + 1);
-      setScore(prev => ({ ...prev, wins: prev.wins + 1 })); // NEW
+      setScore(prev => ({ ...prev, wins: prev.wins + 1 }));
     } else {
       setWinner("Computer Won!");
       setStreak(0);
-      setScore(prev => ({ ...prev, losses: prev.losses + 1 })); // NEW
+      setScore(prev => ({ ...prev, losses: prev.losses + 1 }));
     }
 
     let entry = "Round " + (rounds + 1) + ": " + move + " vs " + computermove;
@@ -57,7 +57,7 @@ export default function App() {
     setHistory([]);
     setUserMove("Paper");
     setComputerMove("Paper");
-    setScore({ wins: 0, losses: 0, ties: 0 }); // NEW
+    setScore({ wins: 0, losses: 0, ties: 0 }); 
   }
 
   return (
@@ -72,8 +72,6 @@ export default function App() {
 
       <p>Rounds Played: {rounds}</p>
       <p>Win Streak: {streak}</p>
-
-      {/* NEW */}
       <p>✅ Wins: {score.wins} | ❌ Losses: {score.losses} | 🤝 Ties: {score.ties}</p>
 
       <button onClick={resetGame}>Reset Game</button>
